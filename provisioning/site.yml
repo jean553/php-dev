@@ -1,0 +1,12 @@
+---
+- hosts: localhost
+  become: true
+
+  vars:
+    username: "vagrant"
+    home: "/home/{{ username }}"
+    document_root: "/{{ username }}"
+
+  roles:
+    - zsh
+    - neovim

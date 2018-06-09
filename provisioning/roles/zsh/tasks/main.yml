@@ -1,0 +1,20 @@
+---
+
+- name: install zsh from repo
+  apt: 
+    name=zsh
+    state=present
+    update_cache=yes
+
+- name: copy config files in rc folder
+  copy: 
+    src=".zshrc"
+    dest="{{ home }}/.zshrc"
+    owner="{{ username }}"
+    group="{{ username }}"
+    mode=0640
+
+- name: change login shell to zsh
+  user:
+    name="{{ username }}" 
+    shell=/usr/bin/zsh 
